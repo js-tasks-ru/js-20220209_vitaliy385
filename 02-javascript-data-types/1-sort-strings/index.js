@@ -4,6 +4,20 @@
  * @param {string} [param="asc"] param - the sorting type "asc" or "desc"
  * @returns {string[]}
  */
-export function sortStrings(arr, param = 'asc') {
+const arr = ['b', 'c', 'a'];
 
+export function sortStrings(arr, param = 'asc') {
+  let new_arr = [...arr];
+  if (param === 'asc') {
+    return new_arr.sort(
+      function (a, b) {
+        return a.localeCompare(b, ['ru', 'eng'], {caseFirst: 'upper'});
+      });
+  } else if (param === 'desc') {
+    return new_arr.sort(
+      function (a, b) {
+        return b.localeCompare(a, ['ru', 'eng'], {caseFirst: 'upper'});
+      });
+  }
 }
+
