@@ -7,17 +7,15 @@
 const arr = ['b', 'c', 'a'];
 
 export function sortStrings(arr, param = 'asc') {
-  let new_arr = [...arr];
-  if (param === 'asc') {
-    return new_arr.sort(
-      function (a, b) {
-        return a.localeCompare(b, ['ru', 'eng'], {caseFirst: 'upper'});
-      });
-  } else if (param === 'desc') {
-    return new_arr.sort(
-      function (a, b) {
-        return b.localeCompare(a, ['ru', 'eng'], {caseFirst: 'upper'});
-      });
-  }
+  let newArray = [...arr];
+  const directions = {
+    asc: 1,
+    desc: -1
+  };
+  const direction = directions[param];
+  // return parameter1.localeCompare(parameter2, ['ru', 'eng'], {caseFirst: 'upper'});
+  return newArray.sort(function(string1, string2)  {
+   return  direction * string1.localeCompare(string2, ['ru', 'eng'], {caseFirst: 'upper'});
+  });
 }
 
